@@ -1,0 +1,113 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<!-- <bean id="userbean" class = "com.demo.bean.User">
+	<property name="name" value="Rajesh"></property>
+	<property name="id" value="23"></property>
+	</bean> -->
+
+
+
+<!-- Simple Bean with reference -->
+	<bean id="userbean" class = "com.demo.bean.User">
+	<property name="skilla" ref="skilla"></property>
+	<property name="skillb" ref="skillb"></property>
+	</bean>
+
+ 	<!--  
+ 	Bean Auto wiring 
+ 	constructor arg
+ 	<bean id = "userbean" class = "com.demo.bean.User" autowire="byName">
+      <property name = "name" value = "Rajesh"/>
+   	<constructor-arg index = "1" value = "Rajesh"/> 
+   	<constructor-arg index = "0" value = "20"/>
+   	
+   	Collection 
+   	<property name="skills">
+   	<list>
+   	
+   		<ref bean="skilla"/>
+   		<ref bean="skillb"/>
+   	</list>
+   	</property>
+   	
+   </bean> -->
+	
+	<!--Bean Inheritance 
+	 <bean id = "parentuserbean" class = "com.demo.bean.User">
+	<property name="skilla" ref="skilla"></property>
+	<property name="skillb" ref="skillb"></property>
+	</bean>
+	
+	<bean id = "userbean" class = "com.demo.bean.User" parent="parentuserbean">
+	
+	</bean> -->
+	
+	
+	<!--
+	
+	Bean Inheritance wit List 
+	 <bean id = "parentuserbean" class = "com.demo.bean.User" abstract="true">
+	<property name="skills">
+	<list>
+		<ref bean="skilla"/>
+	</list>
+	
+	</property>
+	</bean>
+	
+	<bean id = "userbean" class = "com.demo.bean.User" parent="parentuserbean">
+	<property name="skills">
+	<list merge="true">
+		<ref bean="skillb"/>
+	</list>
+	
+	</property>
+	
+	</bean>
+	 -->
+
+	<!-- 
+	Init and destroy method
+	<bean id="userbean" class = "com.demo.bean.User" init-method="myInit" destroy-method="myDestroy">
+	<property name="name" value="Rajesh"></property>
+	<property name="id" value="23"></property>
+	</bean> -->
+
+	<!-- place holder -->
+	<!-- <bean id="skilla" class="com.demo.bean.Skillset">
+		<property name="skill" value="${skilla.skill}"></property>
+	</bean>
+	
+	
+	<bean id="skillb" class="com.demo.bean.Skillset">
+		<property name="skill" value="${skillb.skill}"></property>
+	</bean>
+	 -->
+	
+	
+	<bean id="skilla" class="com.demo.bean.Skillset">
+		<property name="skill" value="Java"></property>
+	</bean>
+	
+	
+	<bean id="skillb" class="com.demo.bean.Skillset">
+		<property name="skill" value="JSP"></property>
+	</bean>
+	 
+	 
+	 
+	<!-- beanpostprocessor and beanfactorypostprocessor -->
+	<!--  <bean class="com.demo.application.DisplayNameBeanPostProcessor"></bean>
+	 
+	<bean class="com.demo.application.MyBeanFactryPostProcessor"></bean> -->
+	
+	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="skills" value="config.properties"></property>
+	</bean>
+	 -->
+</beans>
